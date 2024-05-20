@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using WssConsultingTask.Application.Models.Responses
+@model List<DepartamentResponse>
+
+<div>
+    @RenderDepartaments(Model)
+
+    @* должны быть кнопки для эскпорта и импорта данных. *@
+</div>
+
+@functions {
+    object RenderDepartaments(ICollection<DepartamentResponse> departaments)
+    {
+        <ol>
+            @foreach (var departament in departaments)
+            {
+                <li>
+                    @departament.Name
+
+                    @* тут должна быть кнопки добавления и удаления нового элемента в иерархию.
+                        у этих кнопок к событию onClick необходимо привязать функцию, написанную на js.
+                        функция для вызова метода из АПИ (соответственно, метод добавления или метод удаления).
+                        реализовать функцию вызова АПИ с помощью функции fetch и промисов.
+
+                        должна быть возможность переназначения отдела. *@
+                
+                    @if (departament.Departaments?.Count > 0)
+                    {
+                        RenderDepartaments(departament.Departaments);
+                    }
+                </li>
+            }
+        </ol>
+
+        return null;
+    }
+}
