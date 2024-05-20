@@ -9,8 +9,8 @@ namespace WssConsultingTask.API.Extensions
         /// Чтение файла ведется построчно (на случай, если содержание файла будет слишком большим).
         /// </summary>
         /// <param name="file"> файл </param>
-        /// <returns> xml-разметка </returns>
-        public async static Task<string> GetXmlAsync(this IFormFile file)
+        /// <returns> содержимое фоайла </returns>
+        public async static Task<string> GetContentAsync(this IFormFile file)
         {
             var sb = new StringBuilder();
 

@@ -16,7 +16,7 @@ namespace WssConsultingTask.API.Controllers
                 throw new ArgumentException("Incorrect file", nameof(file));
             }
 
-            var xml = await file.GetXmlAsync();
+            var xml = await file.GetContentAsync();
 
             await departamentsReportService.ImportDepartamentsAsync(xml);
         }
